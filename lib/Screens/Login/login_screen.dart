@@ -27,14 +27,15 @@ class _LogInScreenState extends State<LogInScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 100,),
             Container(
               width: size.width - 90,
               height: size.height * 0.4,
-              // child: SvgPicture.asset(
-              //   "assets/icons/signup.svg",
-              //   // height: size.height * 0.45,
-              //   //width: 50,
-              // ),
+              child: Image.asset(
+                "assets/logo.jpeg",
+                height: size.height * 0.45,
+                width: 50,
+              ),
             ),
             RoundedInputField(
               textEditingController: _emailController,

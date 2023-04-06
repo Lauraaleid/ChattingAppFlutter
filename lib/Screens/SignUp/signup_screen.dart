@@ -34,12 +34,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 70,),
             Container(
               width: size.width - 90,
               height: size.height * 0.4,
+              child: Image.asset(
+                "assets/logo.jpeg",
+                height: size.height * 0.45,
+                width: 50,
+              ),
             ),
             RoundedInputField(
               hintText: 'Username',
