@@ -22,6 +22,15 @@ class MyEncryptionDecryption {
     return rsaKeyGenerator.generateKeyPair();
   }
 
+    // Encrypt a string using AES
+  String encryptStringAES(String plaintext, String password) {
+    final key = encrypt.Key.fromUtf8(password);
+    final iv = encrypt.IV.fromLength(16);
+    final encrypter = encrypt.Encrypter(encrypt.AES(key));
+    final encrypted = encrypter.encrypt(plaintext, iv: iv);
+    return encrypted.base64;
+  }
+  
   // Encrypt the AES key with RSA
   String encryptAESKeyWithRSA(String aesKey, RSAPublicKey publicKey) {
     final encryptor = encrypt.Encrypter(encrypt.RSA(publicKey: publicKey));
@@ -35,15 +44,6 @@ class MyEncryptionDecryption {
     final encrypted = encrypt.Encrypted.fromBase64(encryptedAESKey);
     final decryptedAESKey = encryptor.decrypt(encrypted);
     return decryptedAESKey;
-  }
-
-  // Encrypt a string using AES
-  String encryptStringAES(String plaintext, String password) {
-    final key = encrypt.Key.fromUtf8(password);
-    final iv = encrypt.IV.fromLength(16);
-    final encrypter = encrypt.Encrypter(encrypt.AES(key));
-    final encrypted = encrypter.encrypt(plaintext, iv: iv);
-    return encrypted.base64;
   }
 
   // Decrypt a string using AES
